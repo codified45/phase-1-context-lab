@@ -9,6 +9,10 @@
  for you to use if you need it!
  */
 
+function createEmployeeRecord() {
+    
+};
+
 const allWagesFor = function () {
     const eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
