@@ -9,11 +9,19 @@
  for you to use if you need it!
  */
 
-function createEmployeeRecord() {
-
+function createEmployeeRecord([firstName, familyName, title, payPerHour]) {
+    const employeeRecord = {
+        firstName: firstName,
+        familyName: familyName,
+        title: title,
+        payPerHour: payPerHour,
+        timeInEvents: [],
+        timeOutEvents: [],
+    };
+    return employeeRecord;
 };
 
-function createEmployeeRecords() {
+function createEmployeeRecords([...arrays]) {
     
 };
 
