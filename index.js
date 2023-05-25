@@ -17,12 +17,41 @@ function createEmployeeRecord([firstName, familyName, title, payPerHour]) {
         payPerHour: payPerHour,
         timeInEvents: [],
         timeOutEvents: [],
-    };
+        };
     return employeeRecord;
 };
 
-function createEmployeeRecords([...arrays]) {
-    
+function createEmployeeRecords([...records]) {
+    const employeesArray = records;
+    let arrOfEmployeeObjects = [];
+    for (const employeeArray of employeesArray) {
+        arrOfEmployeeObjects.push(createEmployeeRecord(employeeArray));
+    };
+    return arrOfEmployeeObjects;
+};
+
+function createTimeInEvent(timeStamp) {
+    const hour = Number.parseInt(timeStamp[11] + timeStamp[12] + "00");
+    const date = timeStamp.slice(0,10);
+    const timeInEvent = {
+        type: "TimeIn",
+        hour: hour,
+        date: date,
+    };
+    this.timeInEvents.push(timeInEvent);
+    return this;
+};
+
+function createTimeOutEvent(timeStamp) {
+    const hour = Number.parseInt(timeStamp[11] + timeStamp[12] + "00");
+    const date = timeStamp.slice(0,10);
+    const timeOutEvent = {
+        type: "TimeOut",
+        hour: hour,
+        date: date,
+    };
+    this.timeOutEvents.push(timeOutEvent);
+    return this;
 };
 
 const allWagesFor = function () {
