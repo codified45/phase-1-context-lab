@@ -54,6 +54,17 @@ function createTimeOutEvent(timeStamp) {
     return this;
 };
 
+function hoursWorkedOnDate(date) {
+    for (let i = 0; i<this.timeInEvents.length; i++){
+        if (this.timeInEvents[i].date === date){
+            let hoursWorked = (this.timeOutEvents[i].hour - this.timeInEvents[i].hour) / 100;
+            return hoursWorked;
+        };
+    };
+};
+
+
+
 const allWagesFor = function () {
     const eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
