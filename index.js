@@ -63,7 +63,10 @@ function hoursWorkedOnDate(date) {
     };
 };
 
-
+function wagesEarnedOnDate(date){
+    const payOwed = hoursWorkedOnDate.call(this, date) * this.payPerHour;
+    return payOwed;
+};
 
 const allWagesFor = function () {
     const eligibleDates = this.timeInEvents.map(function (e) {
@@ -75,5 +78,17 @@ const allWagesFor = function () {
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
     return payable
-}
+};
 
+function findEmployeeByFirstName(employeeRecords, firstName){
+    for (const employeeRecord of employeeRecords) {
+        if (employeeRecord.firstName === firstName){
+            return employeeRecord;
+        };
+    };
+    return undefined; 
+};
+
+function calculatePayroll(){
+
+};
