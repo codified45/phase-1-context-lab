@@ -9,6 +9,7 @@
  for you to use if you need it!
  */
 
+
 function createEmployeeRecord([firstName, familyName, title, payPerHour]) {
     const employeeRecord = {
         firstName: firstName,
@@ -31,7 +32,7 @@ function createEmployeeRecords([...records]) {
 };
 
 function createTimeInEvent(timeStamp) {
-    const hour = Number.parseInt(timeStamp[11] + timeStamp[12] + "00");
+    const hour = Number(timeStamp.slice(11));
     const date = timeStamp.slice(0,10);
     const timeInEvent = {
         type: "TimeIn",
@@ -43,7 +44,7 @@ function createTimeInEvent(timeStamp) {
 };
 
 function createTimeOutEvent(timeStamp) {
-    const hour = Number.parseInt(timeStamp[11] + timeStamp[12] + "00");
+    const hour = Number(timeStamp.slice(11));
     const date = timeStamp.slice(0,10);
     const timeOutEvent = {
         type: "TimeOut",
@@ -77,7 +78,7 @@ const allWagesFor = function () {
         return memo + wagesEarnedOnDate.call(this, d)
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
-    return payable
+    return payable;
 };
 
 function findEmployeeByFirstName(employeeRecords, firstName){
@@ -89,6 +90,10 @@ function findEmployeeByFirstName(employeeRecords, firstName){
     return undefined; 
 };
 
-function calculatePayroll(){
-
+function calculatePayroll(arrOfEmpObjects){
+    let payroll = 0;
+    for (const empObject of arrOfEmpObjects){
+       payroll += allWagesFor.call(empObject);
+    };
+    return payroll;
 };
